@@ -2,6 +2,7 @@
     before_action :set_category,shallow:true
     def index
         @posts=Post.all
+        render json: {success: true, posts: @posts}
     end
     def new
    @post=Post.new
@@ -10,9 +11,9 @@
 
    @post=@category.posts.build(post_params)
    if @post.save
-     redirect_to category_post_path(@category,@post)
+    render json: {success: true, message: "post has been created", post: @post}  
    else
-     render "new"
+     render json: {success: false , message: "post has not been created",post: @post}
    end
  end
  def show
@@ -22,24 +23,27 @@
  end
  def edit
    @post=Post.find(params[:id])
+     render json: {success: true, message: "post has been edited", post: @post}  
  end
  def update
   @post=Post.find(params[:id])
    if @post.update(post_params)
-    redirect_to category_post_path(@category,@post)
+    render json: {success: true, message: "post has been updated", post: @post}  
    else
-    render "edit" 
+    render json: {success: false, message: "post has not been updated",post: @post}  
   end
  end
  def destroy
   @post=Post.find(params[:id])
   if @post.destroy
-    redirect_to category_posts_path(@category)
+    render json: {success: true ,message: "post has been deleted",post: @post}
+  else
+    render json: {success: false,message: "post has not been delete",post: @post}  
   end
  end
  private
   def post_params
-    params.require(:post).permit(:title,:description,:category_id)
+    params.permit(:title,:description,:category_id)
   end
   def set_category
     @category=Category.find(params[:category_id])

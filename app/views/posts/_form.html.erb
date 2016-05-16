@@ -1,8 +1,50 @@
+<h2 align="center"> Add Post</h2>
+<div ng-app="">
 <div class="container">
- <div class="form-group">
-  <%= form_for ([@post,@category]) do |f| %>
-    <%= f.label :Title ,class: "control-label" %>
-    <%= f.text_field :title ,class: "form-control" %>
-  <% end %>
- </div>
-</div>      
+  <form name="postForm">
+
+     <div class="form-group has-success">
+        <label class=" control-label">
+          Tiltle
+        </label>
+        <div class="form-group">
+            <input type="text" name="title" ng-model="title" class="form-control" placeholder="Enter first name" ng-maxlength="8" ng-minlength="3" required>
+        </div>    
+          
+          <span   ng-show="postForm.title.$valid"><span class=" col-lg-6 glyphicon glyphicon-ok form-control-feedback"></span></span> </span>
+        
+        <div class="col-lg-4">
+          <span ng-show="postForm.title.$error.required" class="text-danger">title is required</span>
+          <span ng-show="postForm.title.$error.minlength" class="text-danger">title is too short</span>
+          <span ng-show="postForm.title.$error.maxlength" class="text-danger">title is too long</span>
+        </div>
+
+
+        <label class="control-label">
+          Description
+        </label>
+        <div class="form-group">
+            <input type="text" name="description" ng-model="description" class="form-control" placeholder="Enter first name" ng-maxlength="30" ng-minlength="10" required>
+        </div>    
+          
+          <span   ng-show="postForm.description.$valid"><span class=" col-lg-6 glyphicon glyphicon-ok form-control-feedback"></span></span> </span>
+          </div>
+        <div class="col-lg-4">
+          <span ng-show="postForm.description.$error.required" class="text-danger">  description is required</span>
+          <span ng-show="postForm.description.$error.minlength" class="text-danger">description is too short</span>
+          <span ng-show="postForm.description.$error.maxlength" class="text-danger">description is too long</span>
+        </div>   
+    </div>
+    </div>
+        <div class="row">
+          <div class="col-xs-12 text-center">
+            <br />
+            <input type="Submit" value="Add Post" class="btn btn-primary" />
+          </div>
+        </div>
+          
+  </form>
+ <!--{{title}}-->
+  </div>  
+</div>
+</div>

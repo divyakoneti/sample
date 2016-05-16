@@ -1,0 +1,1 @@
+json.extract! @post ,:created_at,:title,:category_id

@@ -1,1 +1,0 @@
-posts_routing_spec.rb

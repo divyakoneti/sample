@@ -1,13 +1,20 @@
-<div class="container">
- <h1> Total Categories </h1>
-   <% @categories.each do |category| %>
-     <b>Category Name</b><p><%= category.name %></p>
-      <p><%= link_to "EDIT" ,edit_category_path(category.id) ,class: "btn btn-primary"%> 
-      <%= link_to "DELETE", category_path(category.id),method: :delete, data: {confirm: "confrim to delete"} ,class: "btn btn-primary" %>
-      <%= link_to "SHOW", category_path(category.id) ,class: "btn btn-primary"%></p>
-
-   <% end %>  
-</div> 
-
-
-
+     
+  <h3> total categories</h3>
+     <hr/>
+      <table class="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <th>name</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-show="!categories.length">
+            <td> count</td>
+          </tr>
+          <tr ng-repeat=" category in categories">
+            <td> {{category.name}}</td>
+             <td><a class="btn btn-danger" ng-click="deleteCategory($index)">Remove</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>               

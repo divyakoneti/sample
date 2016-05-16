@@ -16,6 +16,7 @@ gem 'coffee-rails', '~> 4.1.0'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
+gem 'rack-cors', :require => 'rack/cors'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -25,6 +26,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 group :development, :test do
   gem 'rspec-rails', '~> 3.0'
 end
+gem 'angularjs-rails'
+
+gem 'responders', '~> 2.0'
 gem "therubyracer"
 gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
 gem "twitter-bootstrap-rails"
